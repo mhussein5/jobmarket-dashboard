@@ -175,7 +175,7 @@ SK_DF    = explode_skills(DF_FULL)
 # ═════════════════════════════════════════════════════════════════════════════
 with st.sidebar:
     st.markdown("## Job Market Dashboard 2026")
-    st.markdown("<small style='color:#94a3b8'>Advanced Data Visualization · PAK-AUSTRIA Fachhochschule</small>", unsafe_allow_html=True)
+    st.markdown("<small style='color:#94a3b8'>PAK-AUSTRIA Fachhochschule</small>", unsafe_allow_html=True)
     st.markdown("---")
 
     st.markdown("### Filters")
