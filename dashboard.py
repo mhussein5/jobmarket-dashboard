@@ -174,11 +174,11 @@ SK_DF    = explode_skills(DF_FULL)
 # SIDEBAR — GLOBAL FILTERS
 # ═════════════════════════════════════════════════════════════════════════════
 with st.sidebar:
-    st.markdown("## 🧠 Job Market Intel")
+    st.markdown("## 🧠 Job Market Dashboard")
     st.markdown("<small style='color:#94a3b8'>COMP-834 · Spring 2026</small>", unsafe_allow_html=True)
     st.markdown("---")
 
-    st.markdown("### 🔍 Global Filters")
+    st.markdown("### Filters")
 
     all_cities     = sorted(DF_FULL["location"].dropna().unique().tolist())
     all_industries = sorted(DF_FULL["industry"].dropna().unique().tolist())
