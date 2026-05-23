@@ -798,7 +798,8 @@ with tab4:
         fig16.update_layout(
             title=f"Demand Forecast: {forecast_skill} ({forecast_weeks}-week horizon)",
             height=400, margin=dict(t=50,b=40,l=60,r=20),
-            paper_bgcolor="white", plot_bgcolor="white",
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(color="#E2E8F0"),
             legend=dict(orientation="h", y=1.12),
             xaxis=dict(showgrid=False, title="Week"),
             yaxis=dict(gridcolor="#f1f5f9", title="Weekly Job Postings"))
