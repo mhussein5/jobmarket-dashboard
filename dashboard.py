@@ -1,6 +1,6 @@
 """
 =============================================================================
-  AI-Powered Job Market Intelligence System
+  📊 Pakistan Tech Job Market Tracker — Spring 2026
   Module  : Interactive Streamlit Dashboard
   Course  : COMP-834 Advanced Data Visualization | PAK-AUSTRIA Fachhochschule
   Run     : streamlit run dashboard.py
@@ -28,20 +28,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
-
-# ── Dark Mode Chart Helper ────────────────────────────────────────────────────
-def get_theme():
-    """Return chart colors based on Streamlit theme."""
-    return {
-        "bg":        "rgba(0,0,0,0)",   # transparent — adapts to any theme
-        "plot_bg":   "rgba(0,0,0,0)",
-        "font":      "#FFFFFF",
-        "grid":      "rgba(255,255,255,0.1)",
-        "tick":      "#CCCCCC",
-    }
-
-THEME = get_theme()
 
 # ── Theme / CSS ───────────────────────────────────────────────────────────────
 st.markdown("""
@@ -132,24 +118,12 @@ st.markdown("""
     background: #f0fdf4; color: #16a34a; border: 1px solid #86efac;
     border-radius: 6px; padding: 1px 8px; font-size: 0.75rem; font-weight: 700;
   }
-  div[data-testid="stDataFrame"] { border-radius: 10px; background: transparent; }
+  div[data-testid="stDataFrame"] { border-radius: 10px; }
   .stButton > button {
     background: #2563a8; color: white; border: none;
     border-radius: 8px; padding: 6px 18px; font-weight: 600;
   }
   .stButton > button:hover { background: #1d4ed8; }
-
-  /* ── Dark mode chart fix ── */
-  .stPlotlyChart { background: transparent !important; }
-  [data-testid="stPlotlyChart"] > div { background: transparent !important; }
-
-  /* ── Force readable text in both modes ── */
-  .section-title { color: #93c5fd !important; }
-  .js-plotly-plot .plotly .gtitle { fill: #E2E8F0 !important; }
-  .js-plotly-plot .plotly .xtick text,
-  .js-plotly-plot .plotly .ytick text { fill: #CCCCCC !important; }
-  .js-plotly-plot .plotly .legendtext { fill: #E2E8F0 !important; }
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -200,11 +174,11 @@ SK_DF    = explode_skills(DF_FULL)
 # SIDEBAR — GLOBAL FILTERS
 # ═════════════════════════════════════════════════════════════════════════════
 with st.sidebar:
-    st.markdown("## 🧠 Job Market Intel")
-    st.markdown("<small style='color:#94a3b8'>COMP-834 · Spring 2026</small>", unsafe_allow_html=True)
+    st.markdown("## Job Market Dashboard 2026")
+    st.markdown("<small style='color:#94a3b8'>PAK-AUSTRIA Fachhochschule</small>", unsafe_allow_html=True)
     st.markdown("---")
 
-    st.markdown("### 🔍 Global Filters")
+    st.markdown("### Filters")
 
     all_cities     = sorted(DF_FULL["location"].dropna().unique().tolist())
     all_industries = sorted(DF_FULL["industry"].dropna().unique().tolist())
@@ -224,9 +198,23 @@ with st.sidebar:
     min_exp, max_exp = st.slider("🎓 Experience (yrs)", 0, 15, (0, 15), key="f_exp")
     show_anomalies   = st.toggle("⚠️ Include Anomalies", value=False)
 
-    st.markdown("---")
-    st.markdown("<small style='color:#64748b'>PAK-AUSTRIA Fachhochschule<br>Dr. Muhammad Zeeshan</small>",
-                unsafe_allow_html=True)
+    st.markdown("""
+  <div style='background:#1e293b;border-radius:8px;padding:10px 12px;margin-top:10px;'>
+    <small style='color:#94a3b8;line-height:1.8;'>
+      <b style='color:#e2e8f0;'>Developer:</b>
+      Syeda Mamuna<br>
+      <b style='color:#e2e8f0;'>Supervisor:</b>
+      Dr. Muhammad Zeeshan<br>
+      <b style='color:#e2e8f0;'>Course:</b>
+      COMP-834 · Spring 2026<br><br>
+      © 2026 All Rights Reserved
+    </small> <br>
+    <span style='color:#475569; font-size:0.78rem;'>
+            This dashboard was developed as a semester project for academic purposes only.
+            All data scraped from public job portals (Rozee.pk · Indeed.com.pk).
+            </span>
+  </div>
+  """, unsafe_allow_html=True)
 
 
 # ── Apply Filters ─────────────────────────────────────────────────────────────
@@ -255,12 +243,13 @@ st.markdown("""
 <div style='background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#2563a8 100%);
             padding:1.6rem 2rem; border-radius:16px; margin-bottom:1.5rem;'>
   <h1 style='color:white;margin:0;font-size:1.7rem;font-weight:800;'>
-    🧠 AI-Powered Job Market Intelligence System
+    📊 Pakistan Tech Job Market Intelligence System — Spring 2026
   </h1>
   <p style='color:#93c5fd;margin:4px 0 0;font-size:0.92rem;'>
     Real-time skill demand analytics · Forecasting · XAI · Career Recommendations
-    &nbsp;|&nbsp; COMP-834 Advanced Data Visualization · PAK-AUSTRIA Fachhochschule
+     
   </p>
+  <p style='color:#93c5fd;margin:4px 0 0;font-size:0.92rem;'> Developed by: Syeda Mamuna &nbsp;|&nbsp; Supervised by: Dr Muhammad Zeeshan </p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -354,10 +343,10 @@ with tab1:
                                   name="7-day avg", line=dict(color="#2563a8", width=2.5),
                                   mode="lines"))
         fig.update_layout(height=290, margin=dict(t=10,b=40,l=50,r=10),
-                          paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                          legend=dict(orientation="h", y=1.1, font=dict(color='#E2E8F0')),
+                          paper_bgcolor="white", plot_bgcolor="white",
+                          legend=dict(orientation="h", y=1.1),
                           xaxis=dict(showgrid=False),
-                          yaxis=dict(gridcolor="rgba(255,255,255,0.12)"))
+                          yaxis=dict(gridcolor="#f1f5f9"))
         st.plotly_chart(fig, width='stretch', config={"displayModeBar": False})
 
     with col_b:
@@ -368,10 +357,9 @@ with tab1:
                       hole=0.45, color_discrete_sequence=PALETTE)
         fig2.update_traces(textposition="inside", textinfo="percent",
                            hovertemplate="<b>%{label}</b><br>%{value} jobs (%{percent})")
-        fig2.update_layout(height=290, margin=dict(t=10,b=10,l=10,r=10,
-                         font=dict(color="#E2E8F0")),
-                           showlegend=True, legend=dict(font=dict(size=10, color='#E2E8F0')),
-                           paper_bgcolor="rgba(0,0,0,0)")
+        fig2.update_layout(height=290, margin=dict(t=10,b=10,l=10,r=10),
+                           showlegend=True, legend=dict(font=dict(size=10)),
+                           paper_bgcolor="white")
         st.plotly_chart(fig2, width='stretch', config={"displayModeBar": False})
 
     # ── Row 3: City map + Job type + Source ────────────────────────────────────
@@ -386,10 +374,9 @@ with tab1:
                       color="city", color_discrete_map=CITY_CLR,
                       text="count")
         fig3.update_traces(textposition="outside")
-        fig3.update_layout(height=290, margin=dict(t=10,b=10,l=10,r=10,
-                         font=dict(color="#E2E8F0")),
-                            showlegend=False, paper_bgcolor="rgba(0,0,0,0)",
-                            plot_bgcolor="rgba(0,0,0,0)",
+        fig3.update_layout(height=290, margin=dict(t=10,b=10,l=10,r=10),
+                            showlegend=False, paper_bgcolor="white",
+                            plot_bgcolor="white",
                             yaxis=dict(categoryorder="total ascending"),
                             xaxis=dict(showgrid=False))
         st.plotly_chart(fig3, width='stretch', config={"displayModeBar": False})
@@ -401,12 +388,11 @@ with tab1:
         fig4 = px.bar(jt_cnt, x="type", y="count", color="type",
                       color_discrete_sequence=PALETTE, text="count")
         fig4.update_traces(textposition="outside")
-        fig4.update_layout(height=290, margin=dict(t=10,b=40,l=50,r=10,
-                         font=dict(color="#E2E8F0")),
-                            showlegend=False, paper_bgcolor="rgba(0,0,0,0)",
-                            plot_bgcolor="rgba(0,0,0,0)",
+        fig4.update_layout(height=290, margin=dict(t=10,b=40,l=50,r=10),
+                            showlegend=False, paper_bgcolor="white",
+                            plot_bgcolor="white",
                             xaxis=dict(showgrid=False),
-                            yaxis=dict(gridcolor="rgba(255,255,255,0.12)"))
+                            yaxis=dict(gridcolor="#f1f5f9"))
         st.plotly_chart(fig4, width='stretch', config={"displayModeBar": False})
 
     with col_e:
@@ -415,9 +401,8 @@ with tab1:
         src_cnt.columns = ["source","count"]
         fig5 = px.pie(src_cnt, names="source", values="count",
                       hole=0.5, color_discrete_sequence=["#2563a8","#0d9488"])
-        fig5.update_layout(height=290, margin=dict(t=10,b=10,l=10,r=10,
-                         font=dict(color="#E2E8F0")),
-                            paper_bgcolor="rgba(0,0,0,0)")
+        fig5.update_layout(height=290, margin=dict(t=10,b=10,l=10,r=10),
+                            paper_bgcolor="white")
         st.plotly_chart(fig5, width='stretch', config={"displayModeBar": False})
 
     # ── Auto Insights ──────────────────────────────────────────────────────────
@@ -496,9 +481,8 @@ with tab2:
                       color_continuous_scale=["#dbeafe","#2563a8","#1e3a5f"],
                       labels={"count":"Listings","skill":"Skill"})
         fig6.update_traces(texttemplate="%{text}%", textposition="outside")
-        fig6.update_layout(height=480, margin=dict(t=10,b=10,l=10,r=80,
-                         font=dict(color="#E2E8F0")),
-                            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+        fig6.update_layout(height=480, margin=dict(t=10,b=10,l=10,r=80),
+                            paper_bgcolor="white", plot_bgcolor="white",
                             coloraxis_showscale=False,
                             yaxis=dict(categoryorder="total ascending"),
                             xaxis=dict(showgrid=False))
@@ -512,11 +496,10 @@ with tab2:
                    .groupby(["industry","skill"])
                    .size().unstack(fill_value=0))
         fig7 = px.imshow(hm_data, text_auto=True, aspect="auto",
-                          color_continuous_scale="Blues", color_continuous_midpoint=None,
+                          color_continuous_scale="Blues",
                           labels=dict(x="Skill", y="Industry", color="Count"))
-        fig7.update_layout(height=480, margin=dict(t=10,b=60,l=10,r=10,
-                         font=dict(color="#E2E8F0")),
-                            paper_bgcolor="rgba(0,0,0,0)",
+        fig7.update_layout(height=480, margin=dict(t=10,b=60,l=10,r=10),
+                            paper_bgcolor="white",
                             xaxis=dict(tickangle=-35))
         st.plotly_chart(fig7, width='stretch', config={"displayModeBar": False})
 
@@ -534,12 +517,11 @@ with tab2:
         fig8 = px.line(wk_trend, x="week", y="count", color="skill",
                         color_discrete_sequence=PALETTE,
                         markers=True, labels={"count":"# Listings","week":"Week"})
-        fig8.update_layout(height=320, margin=dict(t=10,b=40,l=50,r=10,
-                         font=dict(color="#E2E8F0")),
-                            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                            legend=dict(orientation="h", y=1.08, font=dict(color='#E2E8F0')),
+        fig8.update_layout(height=320, margin=dict(t=10,b=40,l=50,r=10),
+                            paper_bgcolor="white", plot_bgcolor="white",
+                            legend=dict(orientation="h", y=1.08),
                             xaxis=dict(showgrid=False),
-                            yaxis=dict(gridcolor="rgba(255,255,255,0.12)"))
+                            yaxis=dict(gridcolor="#f1f5f9"))
         st.plotly_chart(fig8, width='stretch', config={"displayModeBar": False})
     else:
         st.info("Select at least one skill above.")
@@ -556,10 +538,9 @@ with tab2:
                 co.loc[a, b] += 1
                 co.loc[b, a] += 1
 
-    fig9 = px.imshow(co, text_auto=True, color_continuous_scale="Blues", color_continuous_midpoint=None, aspect="auto")
-    fig9.update_layout(height=440, margin=dict(t=10,b=70,l=10,r=10,
-                         font=dict(color="#E2E8F0")),
-                        paper_bgcolor="rgba(0,0,0,0)",
+    fig9 = px.imshow(co, text_auto=True, color_continuous_scale="Blues", aspect="auto")
+    fig9.update_layout(height=440, margin=dict(t=10,b=70,l=10,r=10),
+                        paper_bgcolor="white",
                         xaxis=dict(tickangle=-40))
     st.plotly_chart(fig9, width='stretch', config={"displayModeBar": False})
 
@@ -581,13 +562,12 @@ with tab2:
                    color_continuous_scale=["#dc2626","#f97316","#22c55e","#16a34a"],
                    labels={"premium_pct":"Salary Premium (%)","skill":"Skill"})
     fig10.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
-    fig10.add_hline(y=0, line_dash="dash", line_color="#BBBBBB")
-    fig10.update_layout(height=340, margin=dict(t=10,b=60,l=60,r=10,
-                         font=dict(color="#E2E8F0")),
-                         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+    fig10.add_hline(y=0, line_dash="dash", line_color="#64748b")
+    fig10.update_layout(height=340, margin=dict(t=10,b=60,l=60,r=10),
+                         paper_bgcolor="white", plot_bgcolor="white",
                          coloraxis_showscale=False,
                          xaxis=dict(tickangle=-35, showgrid=False),
-                         yaxis=dict(gridcolor="rgba(255,255,255,0.12)"))
+                         yaxis=dict(gridcolor="#f1f5f9"))
     st.plotly_chart(fig10, width='stretch', config={"displayModeBar": False})
 
 
@@ -608,11 +588,10 @@ with tab3:
                            box=True, points=False,
                            color_discrete_map=CITY_CLR,
                            labels={"salary_midpoint":"Salary (PKR)","location":"City"})
-        fig11.update_layout(height=360, margin=dict(t=10,b=40,l=60,r=10,
-                         font=dict(color="#E2E8F0")),
-                             showlegend=False, paper_bgcolor="rgba(0,0,0,0)",
-                             plot_bgcolor="rgba(0,0,0,0)",
-                             yaxis=dict(gridcolor="rgba(255,255,255,0.12)"))
+        fig11.update_layout(height=360, margin=dict(t=10,b=40,l=60,r=10),
+                             showlegend=False, paper_bgcolor="white",
+                             plot_bgcolor="white",
+                             yaxis=dict(gridcolor="#f1f5f9"))
         st.plotly_chart(fig11, width='stretch', config={"displayModeBar": False})
 
     with r1c2:
@@ -621,17 +600,16 @@ with tab3:
         fig12 = px.scatter(sc_df, x="experience_min", y="salary_midpoint",
                             color="job_type", size="skill_count",
                             color_discrete_sequence=PALETTE,
-                            opacity=0.75,
+                            opacity=0.65,
                             trendline="ols",
                             labels={"salary_midpoint":"Salary (PKR)",
                                     "experience_min":"Experience (years)",
                                     "skill_count":"# Skills"})
-        fig12.update_layout(height=360, margin=dict(t=10,b=40,l=60,r=10,
-                         font=dict(color="#E2E8F0")),
-                             paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                             legend=dict(orientation="h", y=1.08, font=dict(color='#E2E8F0')),
+        fig12.update_layout(height=360, margin=dict(t=10,b=40,l=60,r=10),
+                             paper_bgcolor="white", plot_bgcolor="white",
+                             legend=dict(orientation="h", y=1.08),
                              xaxis=dict(showgrid=False),
-                             yaxis=dict(gridcolor="rgba(255,255,255,0.12)"))
+                             yaxis=dict(gridcolor="#f1f5f9"))
         st.plotly_chart(fig12, width='stretch', config={"displayModeBar": False})
 
     r2c1, r2c2 = st.columns(2)
@@ -646,11 +624,10 @@ with tab3:
                        color_discrete_map=brk_colors, text="count")
         fig13.update_traces(textposition="outside")
         fig13.update_layout(height=320, showlegend=False,
-                             margin=dict(t=10,b=40,l=50,r=10,
-                         font=dict(color="#E2E8F0")),
-                             paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                             margin=dict(t=10,b=40,l=50,r=10),
+                             paper_bgcolor="white", plot_bgcolor="white",
                              xaxis=dict(showgrid=False),
-                             yaxis=dict(gridcolor="rgba(255,255,255,0.12)"))
+                             yaxis=dict(gridcolor="#f1f5f9"))
         st.plotly_chart(fig13, width='stretch', config={"displayModeBar": False})
 
     with r2c2:
@@ -664,9 +641,8 @@ with tab3:
                         labels={"avg_salary":"Avg Salary (PKR)","industry":"Industry"})
         fig14.update_traces(texttemplate="₨%{text:,.0f}", textposition="outside")
         fig14.update_layout(height=320, coloraxis_showscale=False,
-                             margin=dict(t=10,b=10,l=10,r=120,
-                         font=dict(color="#E2E8F0")),
-                             paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                             margin=dict(t=10,b=10,l=10,r=120),
+                             paper_bgcolor="white", plot_bgcolor="white",
                              yaxis=dict(categoryorder="total ascending"),
                              xaxis=dict(showgrid=False))
         st.plotly_chart(fig14, width='stretch', config={"displayModeBar": False})
@@ -679,11 +655,10 @@ with tab3:
            .reindex(columns=["Entry","Junior","Mid","Senior"]))
 
     fig15 = px.imshow(hm2, text_auto=".0f", aspect="auto",
-                       color_continuous_scale="Blues", color_continuous_midpoint=None,
+                       color_continuous_scale="Blues",
                        labels=dict(x="Salary Bracket", y="City", color="Avg PKR"))
-    fig15.update_layout(height=300, margin=dict(t=10,b=40,l=10,r=10,
-                         font=dict(color="#E2E8F0")),
-                         paper_bgcolor="rgba(0,0,0,0)")
+    fig15.update_layout(height=300, margin=dict(t=10,b=40,l=10,r=10),
+                         paper_bgcolor="white")
     st.plotly_chart(fig15, width='stretch', config={"displayModeBar": False})
 
     # ── Salary table ────────────────────────────────────────────────────────────
@@ -777,8 +752,8 @@ with tab4:
         fig16.add_trace(go.Scatter(
             x=sk_wk["week"], y=sk_wk["demand"],
             name="Historical", mode="lines+markers",
-            line=dict(color="#E2E8F0", width=2.5),
-            marker=dict(size=7, color="#E2E8F0")))
+            line=dict(color="#1e3a5f", width=2.5),
+            marker=dict(size=7, color="#1e3a5f")))
 
         # ARIMA forecast
         fig16.add_trace(go.Scatter(
@@ -814,20 +789,19 @@ with tab4:
         fig16.add_shape(type="line",
             x0=last_date_str, x1=last_date_str, y0=0, y1=1,
             xref="x", yref="paper",
-            line=dict(color="#AAAAAA", width=1.5, dash="dash"))
+            line=dict(color="#94a3b8", width=1.5, dash="dash"))
         fig16.add_annotation(
             x=last_date_str, y=1, xref="x", yref="paper",
             text="Forecast Start", showarrow=False,
-            yanchor="bottom", font=dict(color="#AAAAAA", size=11))
+            yanchor="bottom", font=dict(color="#94a3b8", size=11))
 
         fig16.update_layout(
             title=f"Demand Forecast: {forecast_skill} ({forecast_weeks}-week horizon)",
             height=400, margin=dict(t=50,b=40,l=60,r=20),
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font=dict(color="#E2E8F0"),
-            legend=dict(orientation="h", y=1.12, font=dict(color='#E2E8F0')),
+            paper_bgcolor="white", plot_bgcolor="white",
+            legend=dict(orientation="h", y=1.12),
             xaxis=dict(showgrid=False, title="Week"),
-            yaxis=dict(gridcolor="rgba(255,255,255,0.12)", title="Weekly Job Postings"))
+            yaxis=dict(gridcolor="#f1f5f9", title="Weekly Job Postings"))
         st.plotly_chart(fig16, width='stretch', config={"displayModeBar": False})
 
         # ── Metrics ───────────────────────────────────────────────────────────
@@ -905,9 +879,8 @@ with tab5:
         orientation="h", marker_color=shap_df["Color"].tolist(),
         text=shap_df["Mean |SHAP|"].apply(lambda x: f"{x:.2f}"),
         textposition="outside", name="Mean |SHAP|"))
-    fig17.update_layout(height=480, margin=dict(t=10,b=10,l=10,r=80,
-                         font=dict(color="#E2E8F0")),
-                         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+    fig17.update_layout(height=480, margin=dict(t=10,b=10,l=10,r=80),
+                         paper_bgcolor="white", plot_bgcolor="white",
                          xaxis=dict(title="Mean |SHAP Value|", showgrid=False),
                          yaxis=dict(title=""))
     st.plotly_chart(fig17, width='stretch', config={"displayModeBar": False})
@@ -992,10 +965,9 @@ with tab5:
         ))
         fig18.update_layout(
             title=f"Prediction Explanation — {pred_skill} Engineer · {pred_city} · {pred_exp} yrs",
-            height=420, margin=dict(t=50,b=80,l=60,r=20,
-                         font=dict(color="#E2E8F0")),
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            yaxis=dict(title="Salary Contribution (PKR)", gridcolor="rgba(255,255,255,0.12)"),
+            height=420, margin=dict(t=50,b=80,l=60,r=20),
+            paper_bgcolor="white", plot_bgcolor="white",
+            yaxis=dict(title="Salary Contribution (PKR)", gridcolor="#f1f5f9"),
             xaxis=dict(showgrid=False, tickangle=-25))
         st.plotly_chart(fig18, width='stretch', config={"displayModeBar": False})
 
@@ -1022,17 +994,16 @@ with tab5:
         x="experience_min", y="salary_midpoint",
         color="label",
         color_discrete_map={"Normal":"#60a5fa","Anomalous":"#dc2626"},
-        size="skill_count", opacity=0.75,
+        size="skill_count", opacity=0.72,
         hover_data=["job_title","company_name","location"],
         labels={"salary_midpoint":"Salary (PKR)", "experience_min":"Experience (yrs)"},
         title="Salary vs Experience — Normal vs Anomalous Listings"
     )
-    fig19.update_layout(height=380, margin=dict(t=50,b=40,l=60,r=10,
-                         font=dict(color="#E2E8F0")),
-                         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                         legend=dict(orientation="h", y=1.1, font=dict(color='#E2E8F0')),
+    fig19.update_layout(height=380, margin=dict(t=50,b=40,l=60,r=10),
+                         paper_bgcolor="white", plot_bgcolor="white",
+                         legend=dict(orientation="h", y=1.1),
                          xaxis=dict(showgrid=False),
-                         yaxis=dict(gridcolor="rgba(255,255,255,0.12)"))
+                         yaxis=dict(gridcolor="#f1f5f9"))
     st.plotly_chart(fig19, width='stretch', config={"displayModeBar": False})
 
     # ── Recommendation Engine ──────────────────────────────────────────────────
