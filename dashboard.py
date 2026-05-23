@@ -177,7 +177,6 @@ with st.sidebar:
     st.markdown("## Job Market Dashboard 2026")
     st.markdown("<small style='color:#94a3b8'>PAK-AUSTRIA Fachhochschule</small>", unsafe_allow_html=True)
     st.markdown("---")
-
     st.markdown("### Filters")
 
     all_cities     = sorted(DF_FULL["location"].dropna().unique().tolist())
