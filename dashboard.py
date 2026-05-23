@@ -198,9 +198,6 @@ with st.sidebar:
     min_exp, max_exp = st.slider("🎓 Experience (yrs)", 0, 15, (0, 15), key="f_exp")
     show_anomalies   = st.toggle("⚠️ Include Anomalies", value=False)
 
-    st.markdown("---")
-    st.markdown("<small style='color:#64748b'>PAK-AUSTRIA Fachhochschule<br>Dr. Muhammad Zeeshan</small>",
-                unsafe_allow_html=True)
     st.markdown("""
   <div style='background:#1e293b;border-radius:8px;padding:10px 12px;margin-top:10px;'>
     <small style='color:#94a3b8;line-height:1.8;'>
@@ -213,6 +210,10 @@ with st.sidebar:
       COMP-834 · Spring 2026<br><br>
       © 2026 All Rights Reserved
     </small>
+    <span style='color:#475569; font-size:0.78rem;'>
+            This dashboard was developed as a semester project for academic purposes only.
+            All data scraped from public job portals (Rozee.pk · Indeed.com.pk).
+            </span>
   </div>
   """, unsafe_allow_html=True)
 
