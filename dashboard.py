@@ -233,8 +233,9 @@ st.markdown("""
   </h1>
   <p style='color:#93c5fd;margin:4px 0 0;font-size:0.92rem;'>
     Real-time skill demand analytics · Forecasting · XAI · Career Recommendations
-    &nbsp;|&nbsp; COMP-834 Advanced Data Visualization · PAK-AUSTRIA Fachhochschule
+     
   </p>
+  <p style='color:#93c5fd;margin:4px 0 0;font-size:0.92rem;'> Developed by: Syeda Mamuna &nbsp;|&nbsp; Supervised by: Dr Muhammad Zeeshan </p>
 </div>
 """, unsafe_allow_html=True)
 
