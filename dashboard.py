@@ -229,7 +229,7 @@ st.markdown("""
 <div style='background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#2563a8 100%);
             padding:1.6rem 2rem; border-radius:16px; margin-bottom:1.5rem;'>
   <h1 style='color:white;margin:0;font-size:1.7rem;font-weight:800;'>
-    🧠 AI-Powered Job Market Intelligence System
+    📊 Pakistan Tech Job Market Intelligence System — Spring 2026
   </h1>
   <p style='color:#93c5fd;margin:4px 0 0;font-size:0.92rem;'>
     Real-time skill demand analytics · Forecasting · XAI · Career Recommendations
