@@ -201,7 +201,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("<small style='color:#64748b'>PAK-AUSTRIA Fachhochschule<br>Dr. Muhammad Zeeshan</small>",
                 unsafe_allow_html=True)
-  st.markdown("""
+  
 <div style='background:#1e293b;border-radius:8px;padding:10px 12px;margin-top:10px;'>
   <small style='color:#94a3b8;line-height:1.8;'>
     <b style='color:#e2e8f0;'>Developer</b><br>
