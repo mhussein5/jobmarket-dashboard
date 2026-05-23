@@ -1068,21 +1068,21 @@ with tab5:
                 </div>""", unsafe_allow_html=True)
     else:
         st.info("Add your current skills above to generate personalized recommendations.")
-# ── Copyright Footer ──────────────────────────────────────────
-st.markdown("---")
-st.markdown("""
-<div style='text-align:center; padding:15px; background:#0f172a;
-            border-radius:12px; margin-top:20px;'>
-  <p style='color:#94a3b8; font-size:0.85rem; margin:0; line-height:2;'>
-    © 2026 <b style='color:#e2e8f0;'>Syeda Mamuna Hussain</b>
-    &nbsp;|&nbsp;
-    Artificial Intelligence · PAK-AUSTRIA Fachhochschule<br>
-    Supervised by <b style='color:#e2e8f0;'>Dr. Muhammad Zeeshan</b><br>
-    Course: COMP-834 Advanced Data Visualization · Spring 2026<br><br>
-    <span style='color:#475569; font-size:0.78rem;'>
-    This dashboard was developed as a semester project for academic purposes only.
-    All data scraped from public job portals (Rozee.pk · Indeed.com.pk).
-    </span>
-  </p>
-</div>
+        # ── Copyright Footer ──────────────────────────────────────────
+        st.markdown("---")
+        st.markdown("""
+        <div style='text-align:center; padding:15px; background:#0f172a;
+                    border-radius:12px; margin-top:20px;'>
+          <p style='color:#94a3b8; font-size:0.85rem; margin:0; line-height:2;'>
+            © 2026 <b style='color:#e2e8f0;'>Syeda Mamuna Hussain</b>
+            &nbsp;|&nbsp;
+            Artificial Intelligence · PAK-AUSTRIA Fachhochschule<br>
+            Supervised by <b style='color:#e2e8f0;'>Dr. Muhammad Zeeshan</b><br>
+            Course: COMP-834 Advanced Data Visualization · Spring 2026<br><br>
+            <span style='color:#475569; font-size:0.78rem;'>
+            This dashboard was developed as a semester project for academic purposes only.
+            All data scraped from public job portals (Rozee.pk · Indeed.com.pk).
+            </span>
+          </p>
+        </div>
 """, unsafe_allow_html=True)
