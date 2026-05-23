@@ -201,15 +201,14 @@ with st.sidebar:
     st.markdown("""
   <div style='background:#1e293b;border-radius:8px;padding:10px 12px;margin-top:10px;'>
     <small style='color:#94a3b8;line-height:1.8;'>
-      <b style='color:#e2e8f0;'>Developer</b><br>
+      <b style='color:#e2e8f0;'>Developer:</b>
       Syeda Mamuna<br>
-      <b style='color:#e2e8f0;'>Supervisor</b><br>
+      <b style='color:#e2e8f0;'>Supervisor:</b>
       Dr. Muhammad Zeeshan<br>
-      PAK-AUSTRIA Fachhochschule<br><br>
-      <b style='color:#e2e8f0;'>Course</b><br>
+      <b style='color:#e2e8f0;'>Course:</b>
       COMP-834 · Spring 2026<br><br>
       © 2026 All Rights Reserved
-    </small>
+    </small> <br>
     <span style='color:#475569; font-size:0.78rem;'>
             This dashboard was developed as a semester project for academic purposes only.
             All data scraped from public job portals (Rozee.pk · Indeed.com.pk).
