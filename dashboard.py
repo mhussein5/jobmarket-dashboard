@@ -821,10 +821,10 @@ with tab4:
             yanchor="bottom", font=dict(color="#AAAAAA", size=11))
 
         fig16.update_layout(
-            title=f"Demand Forecast: {forecast_skill} ({forecast_weeks}-week horizon,
-                         font=dict(color="#E2E8F0"))",
+            title=f"Demand Forecast: {forecast_skill} ({forecast_weeks}-week horizon)",
             height=400, margin=dict(t=50,b=40,l=60,r=20),
             paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(color="#E2E8F0"),
             legend=dict(orientation="h", y=1.12, font=dict(color='#E2E8F0')),
             xaxis=dict(showgrid=False, title="Week"),
             yaxis=dict(gridcolor="rgba(255,255,255,0.12)", title="Weekly Job Postings"))
