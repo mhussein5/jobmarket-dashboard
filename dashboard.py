@@ -1,6 +1,6 @@
 """
 =============================================================================
-  AI-Powered Job Market Intelligence System
+  📊 Pakistan Tech Job Market Tracker — Spring 2026
   Module  : Interactive Streamlit Dashboard
   Course  : COMP-834 Advanced Data Visualization | PAK-AUSTRIA Fachhochschule
   Run     : streamlit run dashboard.py
